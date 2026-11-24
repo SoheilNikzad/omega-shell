@@ -18,7 +18,7 @@ a{color:inherit;text-decoration:none}
 .wrap{width:min(1080px,calc(100% - 48px));margin:auto}
 header{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:13px;direction:ltr;font:700 19px Outfit,sans-serif;letter-spacing:-.5px}
-.logo{width:41px;height:41px;display:inline-flex;align-items:center;justify-content:center;color:var(--red);font:600 42px/1 Outfit,sans-serif}
+.logo{width:41px;height:41px;display:inline-flex;align-items:center;justify-content:center;color:var(--red)}.logo svg{display:block;width:100%;height:100%}.greek{font-family:Arial,'DejaVu Sans',sans-serif;font-weight:400;letter-spacing:0;font-variant:normal}
 .back{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);transition:color .2s}
 .back:hover{color:var(--red)}
 main{min-height:calc(100dvh - 160px);display:grid;grid-template-columns:1fr 420px;align-items:center;column-gap:68px;padding:55px 0 65px}
@@ -49,14 +49,14 @@ button.submit:disabled{opacity:.55;cursor:wait}
 .trap{position:absolute!important;left:-9999px!important;opacity:0!important}
 footer{min-height:72px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;color:#9ba3ae;font:11px Outfit,Vazirmatn,sans-serif}
 @media(max-width:860px){main{grid-template-columns:1fr;gap:36px;padding:38px 0 50px}.intro{text-align:center}.eyebrow{text-align:center}.accent{margin:21px auto}.subtitle{margin:auto}.psi-image{width:min(250px,68%);margin:10px auto}.form-card{max-width:520px;width:100%;margin:auto}}
-@media(max-width:540px){.wrap{width:calc(100% - 34px)}header{height:75px}.brand{font-size:16px}.logo{width:31px;height:31px;font-size:33px}main{padding-top:28px;gap:31px}.form-card{padding:22px 19px}.intro h1{font-size:30px}.subtitle{font-size:13px}footer{font-size:10px}}
+@media(max-width:540px){.wrap{width:calc(100% - 34px)}header{height:75px}.brand{font-size:16px}.logo{width:31px;height:31px}main{padding-top:28px;gap:31px}.form-card{padding:22px 19px}.intro h1{font-size:30px}.subtitle{font-size:13px}footer{font-size:10px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
 <a class="back" href="/" aria-label="بازگشت به امگا"><span aria-hidden="true">→</span> بازگشت به Omega Shell</a>
-<a class="brand" href="/"><span class="logo" aria-hidden="true">Ω</span><span>OMEGA SHELL</span></a>
+<a class="brand" href="/"><span class="logo" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none"><path d="M47.2 95.9 A46 46 0 1 1 52.8 95.9 M4 96H47.2 M52.8 96H96" stroke="currentColor" stroke-width="5.6" stroke-linecap="butt"/></svg></span><span>OMEGA SHELL</span></a>
 </header>
 <main>
 <section class="intro">
@@ -64,11 +64,11 @@ footer{min-height:72px;border-top:1px solid var(--line);display:flex;align-items
 <svg class="psi-image" viewBox="0 0 340 285" role="img" aria-label="نماد مینیمال Ψ درون دایره‌ای ظریف">
 <circle cx="170" cy="137" r="111" fill="none" stroke="#dce5e4" stroke-width="1.7"/>
 <circle cx="170" cy="137" r="98" fill="#f8faf9"/>
-<path d="M108 83v39c0 35 19 58 62 58s62-23 62-58V83M170 80v151M135 231h70" fill="none" stroke="#142039" stroke-width="8" stroke-linecap="square" stroke-linejoin="round"/>
+<path d="M108 83v39c0 35 19 58 62 58s62-23 62-58V83M170 80v151M135 231h70" fill="none" stroke="#142039" stroke-width="8" stroke-linecap="butt" stroke-linejoin="round"/>
 <circle cx="170" cy="80" r="5.4" fill="#d71920"/>
 <path d="M91 223a111 111 0 0 0 158-4" fill="none" stroke="#006f53" stroke-width="3" stroke-linecap="round"/>
 </svg>
-<span class="chip">Ω · Ψ  /  COMING SOON</span>
+<span class="chip"><span class="greek">Ω · Ψ</span>&nbsp; / &nbsp; COMING SOON</span>
 <h1>در حال شکل‌گیری</h1>
 <p class="subtitle">Ω·Ψ هنوز در دست توسعه است. اگر دوست دارید جزو اولین کسانی باشید که نسخه آزمایشی را تجربه می‌کنند، نام خودتان را در فهرست دسترسی زودهنگام ثبت کنید.</p>
 <div class="accent" aria-hidden="true"></div>
@@ -98,7 +98,7 @@ footer{min-height:72px;border-top:1px solid var(--line);display:flex;align-items
 </form>
 </section>
 </main>
-<footer><span>Ω·Ψ — In progress</span><span>OMEGA SHELL · 2026</span></footer>
+<footer><span><span class="greek">Ω·Ψ</span> — In progress</span><span>OMEGA SHELL · 2026</span></footer>
 </div>
 <script>
 const form=document.getElementById('beta-form');
