@@ -1,0 +1,60 @@
+name: Import WeSee frontend into Omega Tau
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-wesee-tau.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Omega Shell
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Checkout pinned WeSee source
+        uses: actions/checkout@v4
+        with:
+          repository: SoheilNikzad/wesee
+          ref: f900e12940864479c3062f15d2e7a4c61fef6285
+          path: _wesee_source
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install and build existing WeSee application
+        working-directory: _wesee_source
+        run: |
+          npm install --no-audit --no-fund
+          npm run build
+
+      - name: Publish static WeSee app into /tau/
+        run: |
+          mkdir -p tau
+          cp -a _wesee_source/dist/. tau/
+          rm -f tau/CNAME
+          rm -rf _wesee_source
+          test -f tau/index.html
+          test -n "$(find tau/assets -name '*.js' -print -quit)"
+          test -n "$(find tau/assets -name '*.css' -print -quit)"
+          grep -q 'wesee-ir.firebaseapp.com' tau/assets/*.js
+          grep -q 'src="./assets/' tau/index.html
+
+      - name: Commit only the built Tau frontend
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tau/
+          if ! git diff --cached --quiet; then
+            git commit -m "build(omega-tau): import pinned WeSee frontend for /tau/"
+            git push
+          fi
